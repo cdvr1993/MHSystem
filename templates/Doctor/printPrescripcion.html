@@ -1,0 +1,96 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <script type="application/javascript" src="{% static "js/jquery-1.9.1.js" %}"></script>
+     <script type="application/javascript" src="{% static "js/Validaciones.js" %}"></script>
+     <script src="{% static "js/Doctor/utils.js" %}"></script>
+     <script type="application/javascript">
+        $(function(){
+           window.moveTo(0, 0);
+           window.resizeTo(screen.width, screen.height);
+        });
+     </script>
+     <link rel="stylesheet" href="{% static "css/jquery-ui.css" %}" />
+     <link rel="stylesheet" type="text/css" href="{% static "css/print.css" %}"  media="print,screen, projection" />
+    <title>Imprimir Prescripción</title>
+</head>
+
+<body>
+    <input style="float: right" type="button" id="button" value="Imprimir" onclick="window.print()">
+    <h1>Prescripción</h1>
+    <input type="hidden" id="idPrescripcion" value={{ Pres.id }}>
+    <input type="hidden" id="idDiagnostico" value={{ idDiagnostico }}>
+        <div id="InfoDoc">
+            <input type="hidden" id="idDoc" value={{ Doc.id_user.id }}>
+            <div class="etiqueta">
+                <label>Doctor(a): </label>
+                <input type="text" value="{{ Doc.name }} {{ Doc.apaterno }} {{ Doc.amaterno }}" readonly>
+            </div>
+            <br>
+            <div class="etiqueta">
+                <label>Especialidad: </label>
+                <input type="text" value="{{ Doc.especialidad }}" readonly>
+            </div>
+            <br>
+            <div class="etiqueta">
+               <label>Matrícula: </label>
+               <input type="text" value="{{ Doc.matricula }}" readonly>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="etiqueta">
+            <label>Paciente: </label> {{Pte.name }} {{ Pte.apaterno }} {{ Pte.amaterno }}
+            <input style="float: right" type="text" value="{{Pres.fecha}}" readonly>
+        </div>
+        <div id="Prescripcion">
+            <div>
+                <div>
+                    <h2>Observaciones</h2>
+                    <textarea  id="textOBS" value="{ Pres.text}}" readonly>{{ Pres.text}}</textarea>
+                </div>
+                <br>
+                <div>
+                    <h2>Medicamentos</h2>
+                {% for m in Meds %}
+                <div class="med">
+                    <table id="InformacionMedicinas">
+                    <tbody>
+                        <tr>
+                            <td class="title">Nombre</td>
+                            <td class="title">Descripcion</td>
+                            <td class="title">Cantidad</td>
+                            <td class="title">Presentacion</td>
+                        </tr>
+                        <tr>
+                            {% for n in NameM %}
+                                {% if n.id == m.id_Nombre.id %}
+                                    <td style="font-style: italic">{{n.medicamento }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>{{ m.descripcion }}</td>
+                            <td>{{m.cantidad}} {{ m.unidad }}</td>
+                            <td>{{m.presentacion}} {{ m.unidad_pres }}</td>
+                        </tr>
+                   </tbody>
+               </table>
+               <h3>Indicaciones</h3>
+                    {% for i in Ind %}
+                                {% if i.id_Medicamento == m %}
+                                    <textarea id="indicacion" class="indicacion" style="border-radius: 15px" readonly>{{ i.indicacion }}</textarea>
+                                {% endif %}
+                            {% endfor %}
+               </div>
+               {% endfor %}
+               </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $("textarea").each(function(){
+        $(this).height( $(this)[0].scrollHeight );
+     });
+    </script>
+</body>
+</html>

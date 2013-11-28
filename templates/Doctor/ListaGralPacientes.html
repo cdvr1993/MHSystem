@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<table id="ListaPatient" class="datatable">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>E-mail</th>
+            <th>Teléfono</th>
+            <th>Doctor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in Pacientes %}
+            {% if forloop.counter0|divisibleby:"2" %}
+                <tr class="odd">
+            {% else %}
+                <tr class="even">
+            {% endif %}
+                <td>{{ patient.name }} {{ patient.apaterno }} {{ patient.amaterno }}</td>
+                <td>{{ patient.id_user.email }}</td>
+                <td>{{ patient.tel }}</td>
+                <td>{{ patient.id_doctor.name }} {{ patient.id_doctor.apaterno }} {{ patient.id_doctor.amaterno }}</td>
+                <td>
+                    <input type="hidden" value="{{ patient.id_user.id }}">
+                    <img id="updatePatient_{{ forloop.counter }}" title="Editar información del paciente" style="padding-left: .5em" src="{% static 'img/update.png' %}" onclick="EditUser(this, 3);">
+                    <img id="deletePatient_{{ forloop.counter }}" title="Borrar Usuario" style="padding-left: .5em" src="{% static 'img/delete.png' %}" onclick="BorrarUsuario(this, 3);">
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

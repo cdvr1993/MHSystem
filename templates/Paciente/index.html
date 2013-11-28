@@ -1,0 +1,77 @@
+{% extends "Paciente/layout.html" %}
+{% block content-body %}
+    <h1>Bienvenido</h1>
+    <h2>Información del paciente</h2>
+    <table class="Hospinfo">
+        <tr>
+            <td class="First">Nombre</td>
+            <td><input class="Hospinfo" type="text" value="{{ Patient.name }} {{ Patient.apaterno }} {{ Patient.amaterno }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">CURP</td>
+            <td><input class="Hospinfo" type="text" value="{{ Patient.curp }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Fecha de nacimiento</td>
+            <td><input class="Hospinfo" type="text" value="{{ Patient.fech_naci }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Tipo de Sangre</td>
+            <td><input class="Hospinfo" type="text" value="{{ Patient.sangre }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Dirección</td>
+            <td><input class="Hospinfo" style="width: 400px;"
+                       value="{{ Patient.calle }} #{{ Patient.numero }}, Col. {{ Patient.colonia }}, {{ Patient.municipio }}, {{ Patient.estado }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Teléfono</td>
+            <td><input class="Hospinfo" type="text" value="{{ Patient.tel }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Celular</td>
+            <td><input class="Hospinfo" value="{{ Patient.cel }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Grupo étnico</td>
+            <td><input class="Hospinfo" value="{{ Patient.grupo }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Religión</td>
+            <td><input class="Hospinfo" value="{{ Patient.religion }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Nombre del doctor</td>
+            <td><input class="Hospinfo" value="{{ Patient.id_doctor.name }} {{ Patient.id_doctor.apaterno }} {{ Patient.id_doctor.amaterno }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First textarea">Alergías</td>
+            <td><textarea class="Hospinfo" readonly>{{ Patient.alergias }}{% if not Patient.alergias %}Ninguna{% endif %}</textarea></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First textarea">Enfermedades</td>
+            <td><textarea class="Hospinfo" readonly>{{ Patient.enfermedades }}{% if not Patient.enfermedades %}Ninguna{% endif %}</textarea></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First textarea">Discapacidades</td>
+            <td><textarea class="Hospinfo" readonly>{{ Patient.discapacidades }}{% if not Patient.discapacidades %}Ninguna{% endif %}</textarea></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First textarea">Antecedentes</td>
+            <td><textarea class="Hospinfo" readonly>{{ Patient.antecedentes }}{% if not Patient.antecedentes %}Ninguno{% endif %}</textarea></td>
+        </tr>
+    </table>
+{% endblock %}

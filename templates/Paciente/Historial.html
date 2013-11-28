@@ -1,0 +1,7 @@
+{% extends "Paciente/layout.html" %}
+{% block content-body %}
+    {% load staticfiles %}
+    <script type="application/javascript" src="{% static "js/Paciente/utils.js" %}"></script>
+    <h1 style="margin-bottom: 1em;">Mi historial médico</h1>
+    {% include "Paciente/DiagnosticosByDate.html" %}
+{% endblock %}

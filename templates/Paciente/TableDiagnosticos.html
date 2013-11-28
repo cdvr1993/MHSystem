@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<table id="tblDiagnosticos" class="datatable">
+    <thead>
+        <th>Doctor</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Opciones</th>
+    </thead>
+    <tbody>
+        {% for diag in diagnosticos %}
+            <tr>
+                <td>{{ diag.id_user.name }} {{ diag.id_user.apaterno }} {{ diag.id_user.amaterno }}</td>
+                <td>{{ diag.fech }}</td>
+                <td>{{ diag.hora }}</td>
+                <td>
+                    <img id="view_{{ forloop.counter }}" title="Ver diagnóstico" src="{% static "img/view.png" %}"
+                         onclick="window.location = '/patient/vistaDiagnostico/?idd={{ diag.id }}'">
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

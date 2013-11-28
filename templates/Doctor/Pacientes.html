@@ -1,0 +1,8 @@
+<div class="filter">
+    <label>Filtro: </label> <input type="text" id="BusqPatient" name="filter" class="delete_enabled"
+                                   onkeypress="if(event.keyCode == 13) $(this).trigger('change');" onchange="new Busqueda().set(this, 3)"/>
+    <input type="hidden" id="PatientSearch" value="">
+</div>
+<div class="clear"></div>
+{% include "Doctor/ListaGralPacientes.html" %}
+{% include "Doctor/PatientPaginator.html" %}

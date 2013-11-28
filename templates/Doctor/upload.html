@@ -1,0 +1,39 @@
+{% extends "Doctor/layout.html" %}
+{% block content-body %}
+    {% if success %}
+        <script type="application/javascript">
+            $(function(){
+                var suc_msg = '{{ suc_msg }}', msg = '';
+                if (suc_msg == '')
+                    msg = 'Archivo subido';
+                else
+                    msg = 'Archivo subido pero se cambio el nombre a ' + suc_msg;
+                new DialogYesNo().show(msg, 'Exito', function(){ window.location = '.';});
+            });
+        </script>
+    {% endif %}
+    {% include "Doctor/busqueda.html" %}
+    <h1>Subir Analisis</h1>
+    <form enctype="multipart/form-data" id="upload" method="post">
+        <input type="hidden" id="id_id" name="id" value="">
+        <fieldset>
+            <legend>Información del análisis</legend>
+            <div class="row">
+                <label class="inline">{{ uForm.name.label }}</label>{{ uForm.name }}{{ uForm.name.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ uForm.fech.label }}</label>{{ uForm.fech }}{{ uForm.fech.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ uForm.file.label }}</label>{{ uForm.file }}
+                <div><label class="inline" style="font-weight: normal; padding-left: 7em;">Max. 10mb</label></div>
+                <label class="inline" style="width: 300px; text-align: left">{{ uForm.file.errors }}</label>
+            </div>
+        </fieldset>
+        <div class="form-actions">
+            <!--<input class="button large color02" type="submit" value="Subir">-->
+            <!--<input class="button large color02" type="button" value="Subir" onclick="Upload()">-->
+            <input class="button medium blue" type="button" value="Subir" onclick="Upload()">
+        </div>
+    </form>
+{% endblock %}

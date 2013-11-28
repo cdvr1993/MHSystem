@@ -1,0 +1,53 @@
+{% extends "Doctor/layout_presc.html" %}
+{% load staticfiles %}
+{% block content-body %}
+    <script type="application/javascript" src="{% static "js/Doctor/utils.js"  %}"></script>
+    <script type="application/javascript">
+        $(function(){
+            $('#add_med').trigger("click");
+        });
+    </script>
+    <h1>Prescripción</h1>
+    <input type="hidden" id="idPrescripcion" value={{ idPrescripcion }}>
+    <input type="hidden" id="idDiagnostico" value={{ idDiagnostico }}>
+    <fieldset>
+               <div>
+               <input type="hidden" id="meds" value=1>
+               <input type="hidden" id="idPat" value={{ Pte.id_user.id }}>
+               <table id="InfoPte" class="datatable">
+                   <thead>
+                   <tr>
+                       <th>Paciente</th>
+                       <th>Enfermedades</th>
+                       <th>Alergias</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr class="odd">
+                       <td>{{Pte.name }} {{ Pte.apaterno }} {{ Pte.amaterno }}</td>
+                       <td  style="font-size:12px">{{Pte.enfermedades}}</td>
+                       <td style="font-size:12px">{{Pte.alergias}}</td>
+                   </tr>
+                   </tbody>
+               </table>
+           </div>
+    </fieldset>
+    <fieldset>
+        <legend>Prescripción</legend>
+        <div style="float: right">
+           {{Fecha }}
+         </div>
+        <br>
+        <div id="newPresc">
+            <div>
+                <div>
+                    <h2>Observaciones</h2>
+                    <textarea class="indicacion" cols="40" id="observaciones"rows="10"></textarea>
+                </div>
+            </div>
+            <h2>Medicamentos<img title="Agregar medicina" id="add_med" style="float:right;margin-bottom: 5px; cursor: pointer;" src="/static/img/add.png" onclick="agregarMeds()"></h2>
+            <br>
+        </div>
+    </fieldset>
+
+{% endblock %}

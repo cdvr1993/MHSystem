@@ -1,0 +1,96 @@
+{% extends "Paciente/layout.html" %}
+{% load staticfiles %}
+{% block content-body %}
+    <script type="application/javascript" src="{% static "js/Paciente/utils.js"  %}"></script>
+
+    <h1>Prescripción</h1>
+    <input type="hidden" id="idPrescripcion" value={{ Pres.id }}>
+    <input type="hidden" id="idDiagnostico" value={{ idDiagnostico }}>
+    <fieldset>
+        <div id="InfoDoc">
+            <input type="hidden" id="idDoc" value={{ Doc.id_user.id }}>
+            <div class="Doctores">
+               <div style="width: 150px;float:left">
+                <label style="margin: 0;color: #888888">Doctor(a): </label>
+
+               </div>
+               <div style="width: 200px;float:left">
+                    <input style="width: 300px;margin-top: 0px;border: 0px; padding-top: 1px" type="text" value="{{ Doc.name }} {{ Doc.apaterno }} {{ Doc.amaterno }}" readonly>
+               </div>
+            </div>
+            <br>
+            <div class="Doctores">
+               <div style="width: 150px;float:left">
+                    <label style="margin: 0;color: #888888" >Especialidad: </label>
+               </div>
+               <div style="width: 200px;float:left">
+                     <input style="width: 300px;margin-top: 0px;border: 0px; padding-top: 1px"  type="text" value="{{ Doc.especialidad }}" readonly>
+               </div>
+            </div>
+            <br>
+            <div class="Doctores">
+               <div style="width: 150px;float:left">
+                    <label style="margin: 0;color:#888888" >Matrícula: </label>
+               </div>
+               <div style="width: 200px;float:left">
+                     <input style="width: 300px;margin-top: 0px;border: 0px; padding-top: 1px"  type="text" value="{{ Doc.matricula }}" readonly>
+               </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Prescripción</legend>
+        <div style="float: left">
+            <label style="margin: 0;color: #888888">Paciente: </label> {{Pte.name }} {{ Pte.apaterno }} {{ Pte.amaterno }}
+         </div>
+        <div style="float: right">
+           {{Pres.fecha}}
+         </div>
+        <br>
+        <div id="Prescripcion">
+            <div>
+                <div>
+                    <h2>Observaciones</h2>
+                    <textarea class="indicacion" style="border-radius: 15px" readonly>{{ Pres.text}}</textarea>
+                </div>
+                <br>
+                <div>
+                    <h2>Medicamentos</h2>
+                {% for m in Meds %}
+                    <table id="InformacionMedicinas" class="datatable" style="padding-bottom: 3em">
+                    <thead>
+                    <tr>
+                       <th>Nombre</th>
+                       <th>Descripcion</th>
+                       <th>Cantidad</th>
+                       <th>Presentacion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            {% for n in NameM %}
+                                {% if n.id == m.id_Nombre.id %}
+                                    <td style="font-style: italic">{{n.medicamento }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td  style="font-size:12px; padding:10px">{{ m.descripcion }}</td>
+                            <td style="font-size:12px; padding:10px">{{m.cantidad}} {{ m.unidad }}</td>
+                            <td style="font-size:12px; padding:10px">{{m.presentacion}} {{ m.unidad_pres }}</td>
+                        </tr>
+                   </tbody>
+               </table>
+               <h3 style="padding: 0">Indicaciones</h3>
+                    {% for i in Ind %}
+                                {% if i.id_Medicamento == m %}
+                                    <textarea class="indicacion" style="border-radius: 15px" readonly>{{ i.indicacion }}</textarea>
+                                {% endif %}
+                            {% endfor %}
+               {% endfor %}
+               </div>
+            </div>
+        </div>
+    </fieldset>
+    <div style="margin-left:auto;margin-right:auto; width: 200px">
+        <input type="button" class="button medium blue" style="width: 200px" value="Regresar a diagnóstico" onclick="regresarDiagnostico()">
+    </div>
+{% endblock %}

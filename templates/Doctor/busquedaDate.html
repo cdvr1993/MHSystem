@@ -1,0 +1,41 @@
+{% extends "Doctor/layout.html" %}
+{% block content-body %}
+<style>
+    .center{
+        margin-left: auto; margin-right: auto;
+    }
+    .flotante{
+        float: left; margin-left: 3em;
+    }
+    input.text{
+        height: 2em;
+    }
+</style>
+<form id="search">
+    <fieldset>
+        <legend>Búsqueda por nombre y fecha</legend>
+        <fieldset>
+            <div>
+                <div class="center" style="width: 30%;">
+                    <label style="float: left; width: 50px; margin-top: .3em;">{{ sForm.name.label }}</label><div style="float: right;">{{ sForm.name }}{{ sForm.name.errors }}</div>
+                </div>
+            </div>
+            <div style="width: 50%; float: left">
+                <label class="flotante">{{ sForm.init.label }}</label>{{ sForm.init }}
+            </div>
+            <div style="width: 50%; float: right;">
+                <label class="flotante">{{ sForm.final.label }}</label>{{ sForm.final }}
+            </div>
+            <div style="width: 50%; float: left">
+                {{ sForm.init.errors }}
+            </div>
+            <div style="width: 50%; float: right;">
+                {{ sForm.final.errors }}
+            </div>
+        </fieldset>
+        <div class="center" style="width: 20%">
+            <input id="btnSearch" class="button medium blue" type="button" onclick="BusquedaPacienteByDate()" value="Buscar">
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

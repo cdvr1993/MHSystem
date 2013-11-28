@@ -1,0 +1,313 @@
+@charset "utf-8";
+body{
+    background:#FFFFEA;
+    font-size:1em;
+    padding:0;
+}
+h1{
+    background: #2860A7;
+    padding: 5px;
+    text-transform: uppercase;
+    color: #fff6bf;
+}
+h2{
+    border-bottom: 3px solid #C0C098;
+    padding: 5px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color:#3870B7;
+    line-height: 1;
+    font-weight: bold;
+}
+#container{
+    text-align: center;
+}
+#header{
+    margin: 0 0 5px 0;
+    padding:0;
+    padding-left:10px;
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#logo{
+    width:10%;
+    float:left;
+    height:30px;
+    padding-top:5px;
+}
+#title{
+    width: 50%;
+    float: left;
+    padding-top:5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#user{
+    width: 39%;
+    float: left;
+    padding-top:5px;
+    padding-right: 5px;
+    text-align: right;
+}
+
+#content{
+    text-align: left;
+    background: #FEFFFF;
+    min-height: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 5px 5px 5px;
+    width: 950px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #3870B7;
+    margin-bottom: 30px;
+}
+
+#content-body{
+    width: 750px;
+    min-height: 100px;
+    float: left;
+}
+
+#content-aside{
+    width: 195px;
+    float: left;
+    text-align: center;
+}
+/*Data tables*/
+.datatable{
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin-bottom: 0px;
+}
+.datatable th{
+    border-bottom: 3px solid #7CA8CF;
+    padding: 0px;
+}
+.datatable td{
+    border-bottom: 1px solid #7CA8CF;
+
+    padding: 0px;
+}
+.datatable tbody tr.odd{
+    background: #FFFFEA;
+
+}
+.paginator{
+    width: 600px;
+    float: left;
+    margin-top: 5px;
+}
+.paginator .page-container{
+    display: inline-block;
+}
+.paginator .page, .paginator .last, 
+.paginator .first, .paginator .next,
+.paginator .previous{
+    display: inline-block;
+    border: 1px solid #7CA8CF;
+    padding: 2px 10px 2px 10px;
+    font-size: 80%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.paginator .page:hover, .paginator .last:hover, 
+.paginator .first:hover, .paginator .next:hover,
+.paginator .previous:hover{
+    background: #D0E9FF;
+}
+.paginator .page.current{
+    background: #A9D7FF;
+    border: 1px solid #2489ED;
+}
+.paginator .disabled{
+    color: #8E8E8E;
+}
+.datatable-info{
+    width: 300px;
+    float: right;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/*dwindow*/
+.dwindow-main{
+    background: #FFFFEA;
+    border: 1px solid #002E7B;
+    width: 500px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    
+}
+.dwindow-main .dwindow-title{
+    float: left;
+    height: 25px;
+    width: 100%;
+    background: #7CA8CF;
+    cursor: move;
+}
+.dwindow-main .dwindow-title p{
+    display: block;
+
+    width: 90%;
+    margin: 2px;
+    float: left;
+}
+.dwindow-main .dwindow-container{
+    overflow: auto;
+    height: 475px;
+    padding: 5px;
+    clear: both;
+}
+.dwindow-main .dwindow-title .dwindow-close{
+    float: right;
+    width: 30px;
+    cursor: auto;
+    text-align: center;
+    margin-top: 4px;
+}
+/*Utils*/
+.vertical-space01{
+    margin-top: 5px;
+}
+.vertical-space02{
+    margin-top: 10px;
+}
+.vertical-space03{
+    margin-top: 15px;
+}
+.vertical-space04{
+    margin-top: 20px;
+}
+.vertical-space05{
+    margin-top: 25px;
+}
+.vertical-space06{
+    margin-top: 30px;
+}
+.vertical-space06-2{
+    margin-top: 33px;
+}
+.vertical-space07{
+    margin-top: 35px;
+}
+/*Forms*/
+form .form-actions{
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+form label{
+    display: block;
+    width: 125px;
+}
+
+form label.inline{
+    display: inline-block !important;
+    width: 120px ;
+    padding: 0 5px 0 5px;
+    text-align: right;
+}
+
+form input[type="text"]{
+    width: 150px;
+}
+
+form input[type="text"].short, form select.medium, form textarea.short{
+    width: 50px;
+}
+form input[type="text"].medium, form select.medium, form textarea.medium{
+    width: 250px;
+}
+
+form input[type="text"].large, form select.large, form textarea.large{
+    width: 350px;
+}
+form{
+    font-size: 80%;
+}
+form fieldset legend{
+    font-size: 110%;
+}
+form fieldset{
+    padding: 5px;
+    border: dotted 1px #021A72;
+}
+/*Filter*/
+.filter{
+    width: 250px;
+    float: right;
+    text-align: right;
+}
+.filter input[type=text]{
+    padding: 3px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+     background: url("/static/img/search.png") no-repeat;
+    background-position: right;
+}
+.filter input[type=text].delete_enabled{
+
+}
+
+.porlet{
+    padding: 5px;
+}
+.porlet .top{
+    border-bottom: 3px solid #C0C098;
+    margin-bottom: 10px;
+}
+.porlet h2{
+    float: left;
+    width: 200px;
+    border: none !important;
+    margin-top: 10px;
+    padding: 0 !important;
+}
+
+input.Hospinfo{
+    padding-left: 1em;
+    border-color: #ffffff;
+    border-width: 0px;
+    width: 300px;
+}
+
+table.Hospinfo{
+    border-width: 0px;
+    padding-left: 1em;
+}
+
+textarea.Hospinfo{
+    resize: none;
+    padding-left: 2em;
+    height: 3em;
+    width: 40em;
+    top: 1em;
+    margin-left: 1em;
+    vertical-align: middle;
+    vertical-align: top;
+    border-radius: 1em;
+}
+
+td.First{
+    width: 150px;
+    font-weight: bold;
+}
+
+td.First.textarea{
+    padding-top: 1em;
+    vertical-align: top;
+}
+
+/* Serán todas las reglas que se usarán en firefox ya que sobreescribirán las anteriores */
+@-moz-document url-prefix() {
+}

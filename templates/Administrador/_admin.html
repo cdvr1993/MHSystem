@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<script src="{% static 'js/utils.js' %}"></script>
+<script src="{% static 'js/Administrador/main.js' %}"></script>
+<h1>Administrador</h1>
+<div class="porlet">
+    <div class="top">
+        <h2>Administradores</h2>
+        <div class="filter">
+            <label>Filtro: </label> <input type="text" id="BusqAdmin" name="filter" class="delete_enabled" onchange="new Busqueda().set(this, 1)"/>
+            <input type="hidden" id="AdminSearch" value="">
+        </div>
+        <div class="clear"></div>
+    </div>
+    {% include "Administrador/_administradores.html" %}
+    {% include "Administrador/_adminPaginator.html" %}
+</div>
+
+<div class="porlet">
+    <div class="top">
+    <h2>Doctores</h2>
+    <div class="filter">
+        <label>Filtro: </label> <input type="text" name="filter"  id="BusqDoctor"  class="delete_enabled" onchange="new Busqueda().set(this, 2)"/>
+        <input type="hidden" id="DoctorSearch" value="">
+    </div>
+    <div class="clear"></div>
+    </div>
+    {% include "Administrador/_usuarios.html" %}
+    {% include "Administrador/DoctorPaginator.html" %}
+</div>
+
+

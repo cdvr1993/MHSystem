@@ -1,0 +1,47 @@
+{% load staticfiles %}
+    <script src="{% static "js/Doctor/utils.js" %}"></script>
+    <script type="application/javascript">
+        $(function(){
+            $('#opciones').trigger("change");
+        });
+    </script>
+    <fieldset id="BusquedaPaciente">
+        <legend>Información paciente</legend>
+        <div>
+            <div class="filter">
+                <select size="1" class="selectPatient" id="opciones" onchange="selectItem(this)">
+                        {% for p in Pacientes%}
+                            <option id="{{ p.id_user.id }}" value="{{ p.id_user.id }}">{{ p.name }} {{ p.apaterno }} {{ p.amaterno }}</option>
+                        {% endfor %}
+                </select>
+            </div>
+            <div class="filter">
+                    <label class="inline">Filtro:</label><input type="text" id="BusqPte" name="filter" class="delete_enabled" onchange="SearchPatient(this)"/>
+                    <input type="hidden" id="PteSearch" value="">
+            </div>
+               <br>
+           <br>
+           <div class="row">
+               <input type="hidden" id="idPte" value="">
+               <table id="InfoPte" class="datatable">
+                   <thead>
+                   <tr>
+                       <th>Paciente</th>
+                       <th>Enfermedades</th>
+                       <th>Alergias</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   {% for c in Current%}
+                   <tr id="currentSearch" class="odd">
+                       <td>{{c.name }} {{ c.apaterno }} {{ c.amaterno }}</td>
+                       <td  style="font-size:12px">{{c.enfermedades}}</td>
+                       <td style="font-size:12px">{{c.alergias}}</td>
+                   </tr>
+                   {% endfor %}
+                   </tbody>
+               </table>
+           </div>
+        </div>
+    </fieldset>
+

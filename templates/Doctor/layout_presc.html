@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% block script %}
+    <script src="{% static "js/Doctor/utils.js" %}"></script>
+{% endblock %}
+{% block content-aside %}
+    <div class="vertical-space07"></div>
+        <input type="button" class="button large color01" value="Guardar" onclick="guardarPrescripcion()">
+        <input type="button" class="button large color01" value="Imprimir" onclick="imprimirPrescripcion()">
+        <input type="button" class="button large color01" value="Eliminar" onclick="eliminarPrescripcion()">
+        <input type="button" class="button large color01" value="Regresar a diagnóstico" onclick="regresarDiagnostico()">
+
+{% endblock %}

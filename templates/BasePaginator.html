@@ -1,0 +1,10 @@
+
+<div id="{% block AdminPaginator %}{% endblock %}" class="paginator">
+    <input type="hidden" id="{% block idLstCount %}{% endblock %}" value="{% block AdminCountValue %}{% endblock %}">
+    {% block FirstButtons %}{% endblock %}
+    <div class="page-container">
+        {% block ForList %}{% endblock %}
+    </div>
+    {% block NextPage %}{% endblock %}
+</div>
+<div class="clear"></div>

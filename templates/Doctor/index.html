@@ -1,0 +1,19 @@
+{% extends "Doctor/layout.html" %}
+{% block content-body %}
+    <h1>Bienvenido</h1>
+    <fieldset>
+        <legend>Datos del doctor</legend>
+        <div>
+            <label>Nombre: </label>{{ dForm.name }} {{ dForm.apaterno }} {{ dForm.amaterno }}
+        </div>
+    <div>
+        <label>Usuario: </label>{{ uForm.username }}
+    </div>
+    </fieldset>
+    <h2>Mis pacientes</h2>
+    {% include "Doctor/MisPacientes.html" %}
+    {% if GralList %}
+        <h2>Todos los pacientes</h2>
+        {% include "Doctor/Pacientes.html" %}
+    {% endif %}
+{% endblock %}

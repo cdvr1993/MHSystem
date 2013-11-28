@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% block script %}
+    <script type="application/javascript" src="{% static "js/Doctor/utils.js" %}"></script>
+{% endblock %}
+{% block content-aside %}
+    <div class="vertical-space07"></div>
+    <input type="button" class="button large color01" value="Inicio" onclick="window.location='/doctor'">
+    <input type="button" class="button large color01" value="Registrar Paciente" onclick="window.location='/doctor/RegistrarPaciente'">
+    <input type="button" class="button large color01" value="Registrar Diagnóstico" onclick="window.location='/doctor/diagnostico/'">
+    <input type="button" class="button large color01" value="Historial Médico" onclick="window.location='/doctor/Historial/'">
+    <input type="button" class="button large color01" value="Análisis" onclick="window.location='/doctor/Upload/'">
+{% endblock %}

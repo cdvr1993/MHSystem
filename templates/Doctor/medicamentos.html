@@ -1,0 +1,64 @@
+{% load staticfiles %}
+    <script type="application/javascript" src="{% static "js/Doctor/utils.js"  %}"></script>
+    <script type="application/javascript">
+        $(function(){
+            $('#BusqMed{{ num }}').trigger("change");
+        });
+    </script>
+    <div id="Medicina{{ num }}">
+                <div class="filter" style="float:left">
+
+                    <label style=" display: inline">Filtro:</label><input style="margin: 0"type="text" id="BusqMed{{ num }}" name="filter" class="delete_enabled" onchange="searchMedicine(this)"/>
+                    <input type="hidden" id="MedSearch{{ num }}" value="">
+                </div>
+                <form>
+                <div  id= "SelectFields{{ num }}" style="float:right">
+                    <select id="SelectMedicine{{ num }}" size="1" class = "selectMed" onchange="selectMedicine(this)">
+                        {% for m in Medicinas%}
+                            <option id="Med_{{ m.id }}{{ num }}" value="{{ m.id }}">{{ m.medicamento }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="SelectDescription{{ num }}" size="1" class = "selectMed"   onchange="selectDescription(this)">
+                        {% for d in Desc%}
+                            <option id = "Desc_{{ d.id }}{{ num }}" value="{{ d.id }}">{{ d.descripcion }} {{ d.cantidad }}  {{ d.unidad}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                </form>
+
+           <br>
+           <br>
+
+           <div>
+               <input type="hidden" id="idNomMed{{ num }}" value="">
+               <input type="hidden" id="idMed{{ num }}" value="">
+               <table id="InformacionMed{{ num }}" class="datatable">
+                   <thead>
+                   <tr>
+                       <th>Nombre</th>
+                       <th>Descripcion</th>
+                       <th>Cantidad</th>
+                       <th>Presentacion</th>
+                       <th>  </th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr class="odd">
+                       <td>{{CurrentName.medicamento }}</td>
+                       <td  style="font-size:12px; padding:10px">{{ Current.descripcion }}</td>
+                       <td style="font-size:12px; padding:10px">{{Current.cantidad}} {{ Current.unidad }}</td>
+                       <td style="font-size:12px; padding:10px">{{Current.presentacion}} {{ Current.unidad_pres }}</td>
+                       <td><img title="Eliminar" id="img{{ num }}" style="padding-left: .5em; cursor: pointer;" src="/static/img/delete_med.png" onclick="quitarMeds(this)"></td>
+
+                   </tr>
+                   </tbody>
+               </table>
+               <br>
+               <div>
+                   <label style="font-size: 12px">Indicación</label>
+                   <textarea class="indicacion" cols="40" id="indicacion{{ num }}" rows="10"></textarea>
+                </div>
+               </div>
+               <br>
+               <br>
+    </div>

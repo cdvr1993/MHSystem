@@ -1,0 +1,29 @@
+{% extends "Doctor/layout.html" %}
+{% load staticfiles %}
+{% block content-body %}
+    <script type="application/javascript" src="{% static "js/utils.js" %}"></script>
+    <script type="application/javascript" src="{% static "js/Doctor/utils.js"  %}"></script>
+    <input type="hidden" id="idDiagnostico" value={{ idDiagnostico }}>
+    <h1>Diagnóstico</h1>
+    {% include "Doctor/busqueda.html" %}
+    <fieldset>
+        <legend>Diagnóstico</legend>
+
+        <div class="row">
+            <label class="inline">Fecha: </label>{{ Fecha }}<label class="inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hora: </label>{{ Hora }}
+            <input type="hidden" id="fecha" value={{ Fecha }}>
+        </div>
+
+        <form id="newDiagnosis">
+            <div class="row">
+                <div>
+                  {{DiagnosisForm.text}} {{ DiagnosisForm.text.errors}}
+                </div>
+            </div>
+             <div class="form-actions">
+                    <input class="button medium blue" style="margin-bottom:1em;font-weight: bold;" id="save_contact" type="button" value="Guardar" onclick="CrearDiagnostico()">
+             </div>
+        </form>
+    </fieldset>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/forms.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/screen.css" %}" />
+    <style type="text/css">
+        body{
+            background-color: #FFFFEA;
+            height: 100%;
+        }
+        div#content{
+            width: 300px;
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto;
+             border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            background: #FEFFFF;
+            border: 1px solid #3870B7;
+            margin-top: 10%;
+            padding: 5px;
+            text-align: center;
+        }
+        div#content .title{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        label.inline{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+        <div id="content">
+            <div class="title"><img src="{% static "img/logo.png"%}"/></div>
+            <form action="." method="post">
+                <!--
+                <div class="row">
+                    <input type="radio" name="auth_type" id="admin"/><label for="admin">Administrador</label>
+                    <input type="radio" name="auth_type" id="medic"/><label for="medic">Médico</label>
+                    <input type="radio" name="auth_type" id="patient"/><label for="patient">Paciente</label>
+                </div>
+                -->
+                <br />
+                <div class="row">
+                    <label class="inline">Usuario</label>
+                    <input type="text" name="username"/>
+                </div>
+                <div class="row">
+                    <label class="inline">Contrase&ntilde;a</label>
+                    <input type="password" name="password"/>
+                </div>
+                <div class="button" style="box-shadow: none">
+                    <input type="submit" value="Entrar" class="button medium color01">
+                </div>
+            </form>
+        </div>
+</body>
+</html>

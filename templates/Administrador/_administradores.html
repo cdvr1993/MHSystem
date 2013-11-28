@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<script src="{% static "js/Administrador/utils.js" %}"></script>
+<table id="ListaAdministradores" class="datatable">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Puesto</th>
+            <th>E-mail</th>
+            <th>Última entrada</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for admin in Administradores %}
+            {% if forloop.counter0|divisibleby:"2" %}
+                <tr class="odd">
+            {% else %}
+                <tr class="even">
+            {% endif %}
+                <td>{{ admin.name }} {{ admin.apaterno }} {{ admin.amaterno }}</td>
+                <td>{{ admin.puesto }}</td>
+                <td>{{ admin.id_user.email }}</td>
+                <td>{{ admin.id_user.last_login }}</td>
+                <td>
+                    <input type="hidden" value="{{ admin.id_user.id }}">
+                    <img id="updateAdmin_{{ forloop.counter }}" title="Editar información del administrador" style="padding-left: .5em" src="{% static 'img/update.png' %}" onclick="EditUser(this, 1);">
+                    {% ifnotequal user admin.id_user %}
+                        <img id="deleteAdmin_{{ forloop.counter }}" title="Borrar Usuario" style="padding-left: .5em" src="{% static 'img/delete.png' %}" onclick="BorrarUsuario(this, 1);">
+                    {% endifnotequal %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

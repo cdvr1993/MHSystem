@@ -1,0 +1,22 @@
+{% extends "BasePaginator.html" %}
+{% block idLstCount %}MyPatientCount{% endblock %}
+{% block AdminCountValue %}{{ lstBtnMyPatient|length }}{% endblock %}
+{% block AdminPaginator %}mypaPag{% endblock %}
+{% block FirstButtons %}
+    <div class="first disabled" onclick="new Paginador(this).evt(3, true)">&lt;&lt;&nbsp;First</div>
+    <div class="previous disabled" onclick="new Paginador(this).evt(3, true)">&lt;&nbsp;Previous</div>
+{% endblock %}
+<!-- For que mostrará los botones necesarios para el manejo de la lista -->
+{% block ForList %}
+    <div id="btnMyPa1" class="page current" onclick="new Paginador(this).evt(3, true)">1</div>
+    {% for button in lstBtnMyPatient %}
+        <div id="btnMyPa{{ button }}" class="page" onclick="new Paginador(this).evt(3, true)">{{ button }}</div>
+    {% endfor %}
+{% endblock %}
+<!-- Bloque que maneja si se mostrarán el btón de next y de last -->
+{% block NextPage %}
+    {% if lstBtnMyPatient|length != 0 %}
+        <div class="next" onclick="new Paginador(this).evt(3, true)">Next&nbsp;&gt;</div>
+        <div class="last" onclick="new Paginador(this).evt(3, true)">Last&nbsp;&gt;&gt;</div>
+    {% endif %}
+{% endblock %}

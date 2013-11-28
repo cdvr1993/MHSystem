@@ -1,0 +1,36 @@
+{% extends "Administrador/layout.html" %}
+{% block content-body %}
+    <h1>Bienvenido</h1>
+    <h2>Información del Hospital</h2>
+    <table class="Hospinfo">
+        <tr>
+            <td class="First">Razón Social</td>
+            <td><input class="Hospinfo" type="text" value="{{ Hospital.razon }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">RFC</td>
+            <td><input class="Hospinfo" type="text" value="{{ Hospital.rfc }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Dirección</td>
+            <td><input class="Hospinfo" type="text" value="{{ Hospital.calle }} #{{ Hospital.numero }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Colonia</td>
+            <td><input class="Hospinfo" value="{{ Hospital.colonia }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Municipio</td>
+            <td><input class="Hospinfo" type="text" value="{{ Hospital.municipio }}" readonly></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td class="First">Estado</td>
+            <td><input class="Hospinfo" value="{{ Hospital.estado }}" readonly></td>
+        </tr>
+    </table>
+{% endblock %}

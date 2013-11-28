@@ -1,0 +1,50 @@
+{% extends "Administrador/layout.html" %}
+{% load staticfiles %}
+ {% block content-body %}
+<script src="{% static 'js/Administrador/Registro.js' %}"></script>
+{% if Edit %}<script src="{% static 'js/Administrador/utils.js' %}"></script> {% endif %}
+<h1>Registrar Administrador</h1>
+<form id="register" enctype="multipart/form-data" action="" method="post">
+    <fieldset>
+        <legend>Datos de autentificación</legend>
+        {% if not Edit %}
+            <div class="row">
+                <label class="inline">{{ user_form.username.label }}</label> {{ user_form.username }}{{ user_form.username.errors }}
+            </div>
+            <div class="row">
+               <label class="inline"> {{ user_form.password.label }} </label>{{ user_form.password }}{{ user_form.password.errors }}
+            </div>
+        {% else %}
+            <input type="hidden" name="id" value="{{ EditID }}">
+            <input type="hidden" name="tipo" value="{{ TipoInt }}">
+        {% endif %}
+        <div class="row">
+           <label class="inline"> {{ user_form.email.label }}</label>{{ user_form.email }}{{ user_form.email.errors }}
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Datos personales</legend>
+        <div class="row">
+            <label class="inline">{{ form.name.label }}</label>{{ form.name }}{{ form.name.errors }}
+        </div>
+        <div class="row">
+            <label class="inline">{{ form.apaterno.label}}</label>{{ form.apaterno }}{{ form.apaterno.errors }}
+        </div>
+        <div class="row">
+            <label class="inline">{{ form.amaterno.label}}</label>{{ form.amaterno }}{{ form.amaterno.errors }}
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Información Institucional</legend>
+         <div class="row">
+           <label class="inline"> {{ form.puesto.label }}</label>{{ form.puesto }}{{ form.puesto.errors }}
+        </div>
+    </fieldset>
+    <div class="form-actions">
+        <input class="button medium blue" style="font-weight: bold;" id="save_contact" type="button"
+               {% if Edit %}value="Actualizar" onclick="UpdateChanges()"
+               {% else %}value="Guardar" onclick="RegistrarAdmin()" {% endif %}/>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "Administrador/layout.html" %}
+{% load staticfiles %}
+{% block content-body %}
+    {% if Edit %}
+        <script type="application/javascript" src="{% static "js/Administrador/utils.js" %}"></script>
+    {% else %}
+        <script type="application/javascript" src="{% static "js/Administrador/Registro.js" %}"></script>
+    {% endif %}
+    <h1>Registrar Doctor</h1>
+    <form id="register">
+    {% if Edit %}
+        <input type="hidden" name="id" value="{{ EditID }}">
+        <input type="hidden" name="tipo" value="{{ TipoInt }}">
+    {% else %}
+        <fieldset>
+            <legend>Datos de autentificación</legend>
+            <div class="row">
+                <label class="inline">{{ uForm.username.label }}</label>{{ uForm.username }}{{ uForm.username.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ uForm.password.label }} </label>{{ uForm.password }}{{ uForm.password.errors }}
+                <label class="inline">Repetir</label>
+                <input type="password" name="re_password" value="" onblur="MatchesPassword($('#id_password'), $(this))">
+            </div>
+        </fieldset>
+    {% endif %}
+        <fieldset>
+            <legend>Información Personal</legend>
+            <div class="row">
+             <label class="inline">{{ dForm.name.label }}</label>{{ dForm.name }}{{ dForm.name.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ dForm.apaterno.label }}</label>{{ dForm.apaterno }}{{ dForm.apaterno.errors }}
+                <label class="inline">{{ dForm.amaterno.label }}</label>{{ dForm.amaterno }}{{ dForm.amaterno.errors }}
+            </div>
+
+            <div class="row">
+                <label class="inline">{{ dForm.fech_naci.label }}</label>{{ dForm.fech_naci }}{{ dForm.fech_naci.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ dForm.calle.label }}</label>{{ dForm.calle }}{{ dForm.calle.errors }}
+                <label class="inline">{{ dForm.numero.label }}</label>{{ dForm.numero }}{{ dForm.numero.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ dForm.colonia.label }}</label>{{ dForm.colonia }}{{ dForm.colonia.errors }}
+                <label class="inline">{{ dForm.cod_post.label }}</label>{{ dForm.cod_post }}{{ dForm.cod_post.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ dForm.municipio.label }}</label>{{ dForm.municipio }}{{ dForm.municipio.errors }}
+                <label class="inline">{{ dForm.estado.label }}</label>{{ dForm.estado }}{{ dForm.estado.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ dForm.pais.label }}</label>{{ dForm.pais }}{{ dForm.pais.errors }}
+                <label class="inline">{{ dForm.tel.label }}</label>{{ dForm.tel }}{{ dForm.tel.errors }}
+            </div>
+            <div class="row">
+                <label class="inline">{{ dForm.cel.label }}</label>{{ dForm.cel }}{{ dForm.cel.errors }}
+                <label class="inline">{{ uForm.email.label }}</label>{{ uForm.email }}{{ uForm.email.errors }}
+            </div>
+            <div class="row">
+            <label class="inline">{{ dForm.matricula.label }}</label>{{ dForm.matricula }}{{ dForm.matricula.errors }}
+                <label class="inline">{{ dForm.especialidad.label }}</label>{{ dForm.especialidad }}{{ dForm.especialidad.errors }}
+            </div>
+            <div class="row">
+                 <label class="inline">{{ dForm.area.label }}</label>{{ dForm.area }}{{ dForm.area.errors }}
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Permisos</legend>
+            <div class="row" >
+                <label class="inline" style="width: 200px;">{{ pForm.acceso.label }}</label>{{ pForm.acceso }}{{ pForm.acceso.errors }}
+            </div>
+            <div class="row">
+                <label class="inline" style="width: 200px;">{{ pForm.full_view.label }}</label>{{ pForm.full_view }}{{ pForm.full_view.errors }}
+            </div>
+        </fieldset>
+
+        <div class="form-actions">
+            <input id="btnSave" class="button medium blue" style="margin-top: 1em;" type="button"
+                   {% if Edit %}onclick="UpdateChanges()" value="Actualizar"
+                   {% else %}onclick="RegistrarDoctor()" value="Registrar"{% endif %}>
+        </div>
+
+    </form>
+{% endblock %}

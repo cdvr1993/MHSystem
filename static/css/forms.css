@@ -1,0 +1,198 @@
+/* --------------------------------------------------------------
+
+   forms.css
+   * Sets up some default styling for forms
+   * Gives you classes to enhance your forms
+
+   Usage:
+   * For text fields, use class .title or .text
+   * For inline forms, use .inline (even when using columns)
+
+-------------------------------------------------------------- */
+
+/*
+  A special hack is included for IE8 since it does not apply padding
+  correctly on fieldsets
+ */
+label    { font-weight: bold; }
+fieldset { padding:0 1em 0em 1em; margin: 0 0 1em 0; border: 1px solid #ccc; }
+legend   { font-weight: bold; font-size:1.2em; margin-top:-0.2em; margin-bottom:1em; }
+
+fieldset, #IE8#HACK { padding-top:1.4em; }
+legend, #IE8#HACK { margin-top:0; margin-bottom:0; }
+
+.selectPatient {
+    width:200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:5px;
+    background: #f8f8f8;
+    color:#888;
+    border:1px solid;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+textarea.indicacion{
+    height: 70px;
+    width: 100%;
+    margin: 0 0 1em 0;
+    resize: none;
+}
+.selectMed {
+    width:190px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:5px;
+    background: #f8f8f8;
+    color:#888;
+    border:1px solid;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+div.Doctores{
+    width: 100%;
+    height: 10px;
+}
+
+/* Form fields
+-------------------------------------------------------------- */
+
+/*
+  Attribute selectors are used to differentiate the different types
+  of input elements, but to support old browsers, you will have to
+  add classes for each one. ".title" simply creates a large text
+  field, this is purely for looks.
+ */
+input[type=text], input[type=password], input[type=url], input[type=email],
+input.text, input.title,
+textarea {
+  background-color:#fff;
+  border:1px solid #bbb;
+  color:#000;
+    resize: none;
+}
+input[type=text]:focus, input[type=password]:focus, input[type=url]:focus, input[type=email]:focus,
+input.text:focus, input.title:focus,
+textarea:focus {
+  border-color:#666;
+}
+select { background-color:#fff; border-width:1px; border-style:solid; }
+
+input[type=text], input[type=password], input[type=url], input[type=email],
+input.text, input.title,
+textarea, select {
+  margin:0.5em 0;
+}
+
+input.text,
+input.title { width: 300px; padding:5px; }
+input.title { font-size:1.5em; }
+textarea    { width: 80%; height: 250px; padding:5px; margin:1em 10%;}
+
+/*
+  This is to be used on forms where a variety of elements are
+  placed side-by-side. Use the p tag to denote a line.
+ */
+form.inline { line-height:3; }
+form.inline p { margin-bottom:0; }
+
+
+/* Success, info, notice and error/alert boxes
+-------------------------------------------------------------- */
+
+.error,
+.alert,
+.notice,
+.success,
+.info { padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.notice        { background: #fff6bf; color: #514721; border-color: #ffd324; }
+.success       { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.info          { background: #d5edf8; color: #205791; border-color: #92cae4; }
+.error a, .alert a { color: #8a1f11; }
+.notice a          { color: #514721; }
+.success a         { color: #264409; }
+.info a            { color: #205791; }
+
+form div.row{
+    margin-bottom: 5px;
+}
+
+/*Buttons*/
+.button{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 0px;
+    cursor: pointer;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+
+    box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+}
+
+.button.large{
+    width: 15em;
+    padding: 0px 2px 0 2px;
+    font-size: 12px;
+}
+.button.medium{
+    width: 75px;
+    padding: 5px;
+}
+.button.short{
+    width: 50px;
+    padding: 3px;
+}
+
+.button.color01{
+   background: #00A4D3;
+    color: #fff;
+    font-weight: bold;
+}
+.button.color01:hover{
+   background: #20C4F3;
+}
+.button.color02{
+    width: 75px;
+}
+.button.color03{
+    width: 50px;
+}
+.button.blue
+{
+    background: #4477a1;
+    background: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#4477a1) );
+    background: -moz-linear-gradient(-90deg, #81a8cb, #4477a1);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
+    font-weight: bold;
+    width: 8em;
+    height: 2.5em;
+    color: lightyellow;
+}
+
+/* Serán todas las reglas que se usarán en firefox ya que sobreescribirán las anteriores */
+@-moz-document url-prefix() {
+    .button.large{
+        height: 3em;
+    }
+}

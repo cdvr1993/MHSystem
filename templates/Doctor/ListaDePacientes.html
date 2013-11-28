@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<script src="{% static "js/Administrador/utils.js" %}"></script>
+<table id="ListaMyPatient" class="datatable">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>E-mail</th>
+            <th>Teléfono</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in MyPacientes %}
+            {% if forloop.counter0|divisibleby:"2" %}
+                <tr class="odd">
+            {% else %}
+                <tr class="even">
+            {% endif %}
+                <td>{{ patient.name }} {{ patient.apaterno }} {{ patient.amaterno }}</td>
+                <td>{{ patient.id_user.email }}</td>
+                <td>{{ patient.tel }}</td>
+                <td>
+                    <input type="hidden" value="{{ patient.id_user.id }}">
+                    <img id="updateMyPatient_{{ forloop.counter }}" title="Editar información del paciente" style="padding-left: .5em" src="{% static 'img/update.png' %}" onclick="EditUser(this, 3, true);">
+                    <img id="deleteMyPatient_{{ forloop.counter }}" title="Borrar Usuario" style="padding-left: .5em" src="{% static 'img/delete.png' %}" onclick="BorrarUsuario(this, 3, true);">
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

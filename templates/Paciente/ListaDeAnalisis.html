@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<table id="ListaDeArchivos" class="datatable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha del análisis</th>
+                <th>Fecha de súbida</th>
+                <th>Doctor</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in Files %}
+                {% if forloop.counter0|divisibleby:"2" %}
+                    <tr class="odd">
+                {% else %}
+                    <tr class="even">
+                {% endif %}
+                    <td>{{ file.name }}</td>
+                    <td>{{ file.analisis.fech }}</td>
+                    <td>{{ file.analisis.fech_up }}</td>
+                    <td>{{ file.analisis.id_user.name }} {{ file.analisis.id_user.apaterno }} {{ file.analisis.id_user.amaterno }}</td>
+                    <td>
+                        <input type="hidden" value="{{ file.analisis.id }}">
+                        <img title="Download" style="padding-left: .5em; width: 2em; height: 2em" src="{% static 'img/download.jpg' %}" onclick="DownloadFile(this)">
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>

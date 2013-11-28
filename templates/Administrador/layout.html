@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% block content-aside %}
+    <div class="vertical-space07"></div>
+        <input type="button" class="button large color01" value="Inicio" onclick="window.location='/administrator'">
+        <input type="button" class="button large color01" value="Registrar Administrador" onclick="window.location='/administrator/RegisterAdmin'">
+        <input type="button" class="button large color01" value="Registrar Doctor" onclick="window.location='/administrator/RegisterDoctor/'">
+        <input type="button" class="button large color01" value="Listar Usuarios" onclick="window.location='/administrator/ListaDeUsuarios/'">
+{% endblock %}

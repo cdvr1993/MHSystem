@@ -1,0 +1,64 @@
+{% extends "Doctor/layout.html" %}
+{% load staticfiles %}
+{% block content-body %}
+    <script type="application/javascript" src="{% static "js/Doctor/utils.js"  %}"></script>
+    <h1>Diagnóstico</h1>
+    <input type="hidden" id="idDiagnostico" value={{ Diag.id }}>
+    <input type="hidden" id="idPrescripcion" value={{ Diag.id_presc.id }}>
+    <input type="hidden" id="idDoctor" value={{ Diag.id_user.id }}>
+    <input type="hidden" id="idPaciente" value={{ Diag.id_paciente.id }}>
+    <fieldset>
+        <div id="InfoDoc">
+
+            <div class="Doctores">
+               <div style="width: 150px;float:left">
+                <label style="margin: 0;color: #888888">Doctor(a): </label>
+               </div>
+               <div style="width: 200px;float:left">
+                    <input style="width: 300px;margin-top: 0px;border: 0px; padding-top: 1px" type="text" value="{{ Doc.name }} {{ Doc.apaterno }} {{ Doc.amaterno }}" readonly>
+               </div>
+            </div>
+            <br>
+            <div class="Doctores">
+               <div style="width: 150px;float:left">
+                    <label style="margin: 0;color: #888888" >Especialidad: </label>
+               </div>
+               <div style="width: 200px;float:left">
+                     <input style="width: 300px;margin-top: 0px;border: 0px; padding-top: 1px"  type="text" value="{{ Doc.especialidad }}" readonly>
+               </div>
+            </div>
+            <br>
+            <div class="Doctores">
+               <div style="width: 150px;float:left">
+                    <label style="margin: 0;color:#888888" >Matrícula: </label>
+               </div>
+               <div style="width: 200px;float:left">
+                     <input style="width: 300px;margin-top: 0px;border: 0px; padding-top: 1px"  type="text" value="{{ Doc.matricula }}" readonly>
+               </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div style="float: left">
+            <label style="margin: 0;color: #888888; -moz-box-sizing: ">Paciente: </label> {{Pte.name }} {{ Pte.apaterno }} {{ Pte.amaterno }}
+         </div>
+        <div style="float: right">
+           {{Diag.hora}}
+         </div>
+        <div style="float: right">
+           {{Diag.fech}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         </div>
+        <br>
+        <h2>Diagnóstico</h2>
+        <textarea class="indicacion" style="border-radius: 15px; height: 300px" readonly>{{ Diag.text }}</textarea>
+        <br>
+        <div style="float: left">
+            <label style="margin: 0;color: #888888">Prescripción: </label>
+            <input class="button medium blue" style="font-weight: bold; margin-bottom: 1em;" id="add_presc" type="button" {% if isPresc %} value="Ver" onclick="verPrescripcion()" {% else %} value="Agregar" onclick="agregarPrescripcion()"{% endif %}>
+         </div>
+
+
+    </fieldset>
+
+
+{% endblock %}
